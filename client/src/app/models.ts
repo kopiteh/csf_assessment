@@ -8,3 +8,20 @@ export interface Recipe extends RecipeSummary {
   ingredients: string[];
   instruction: string;
 }
+
+export interface ResponseMessage {
+  message: string
+}
+
+
+export class RecipeHolder {
+  constructor(
+  public title: string,
+  public image: string,
+  public ingredients: string[],
+  public instruction: string,
+
+
+  ){}
+
+}

@@ -1,4 +1,27 @@
-<p>recipe-add works!</p>
 
 
-<button type="button" [routerLink]="['/']"> Back </button>
+<form [formGroup]="form" (submit)="onAdd()">
+
+  <label for="title"> Title </label>
+  <div>
+    <input type="text" id="title" formControlName = "title">
+  </div>
+
+  <label for="ingredients"> Ingredients </label>
+  <div>
+    <textarea id="ingredients" formControlName = "ingredients"> </textarea>
+  </div>
+
+  <label for="instruction"> Instruction </label>
+  <div>
+    <textarea id="instruction" formControlName = "instruction"> </textarea>
+  </div>
+
+  <label for="image"> Image </label>
+  <div>
+    <input type="text" id="image" formControlName = "image">
+  </div>
+  <button type="button" [routerLink]="['/']"> Back </button>
+  <button type="submit" [disabled]="!form.valid"> Add </button>
+
+</form>

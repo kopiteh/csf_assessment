@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { lastValueFrom } from "rxjs";
-import { Recipe, RecipeSummary } from './models';
+import { Recipe, RecipeHolder, RecipeSummary, ResponseMessage } from './models';
 
 @Injectable()
 export class RecipeService {
@@ -27,6 +27,13 @@ export class RecipeService {
                   instruction: r.instruction} as Recipe))
   }
 
+  postRecipe(recipe : RecipeHolder): Promise<ResponseMessage> {
+
+    return lastValueFrom(
+        this.http.post<ResponseMessage>('http://localhost:8080/api/recipe', recipe)
+    )
+
+  }
 
 }
 

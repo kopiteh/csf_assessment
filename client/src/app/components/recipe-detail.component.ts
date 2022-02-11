@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../models';
 import { RecipeService } from '../recipe.service';
 
@@ -12,7 +12,9 @@ export class RecipeDetailComponent implements OnInit {
   recipeId! : string;
   recipe! : Recipe;
 
-  constructor(private recipeSvc:RecipeService, private activatedRoute : ActivatedRoute) { }
+  constructor(private recipeSvc:RecipeService,
+            private router : Router,
+            private activatedRoute : ActivatedRoute) { }
 
 
 
@@ -25,6 +27,7 @@ export class RecipeDetailComponent implements OnInit {
     .catch(error => {
       alert('An error has ocurred while retrieving recipe.')
       console.error('>>> error: ', error)
+      this.router.navigate([''])
     })
     console.info( '>>> recipe: ', this.recipe)
 
